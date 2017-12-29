@@ -1,0 +1,85 @@
+@import '../../util.less';
+
+.input-image {
+  position: relative;
+  margin: 0 0 16px 0;
+  padding: (128px - 28px) / 2;
+  width: 128px;
+  height: 128px;
+  border: 2px dashed @color-dark;
+  border-radius: 2px;
+
+  .box();
+
+  &:not(.hover):not(.active) {
+    border-color: @color-dark !important;
+    background-color: transparent !important;
+  }
+
+  &.drag {
+    border-color: @color-primary;
+  }
+
+  &.hover {
+    border-color: @color-primary;
+    background-color: @color-primary;
+
+    .waiting {
+      display: none;
+    }
+  
+    .ready {
+      display: block;
+    }
+
+    .icon svg {
+      stroke: @color-white;
+    }
+  }
+
+  &.active {
+    border: none;
+    background-color: @color-primary;
+
+    img {
+      display: block;
+    }
+
+    .icon {
+      display: none;
+    }
+  }
+
+  img {
+    display: none;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    margin: auto;
+    width: 128px;
+    height: 128px;
+    z-index: 1;
+  }
+
+  input {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 128px;
+    height: 128px;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .waiting {
+    display: block;
+  }
+
+  .ready {
+    display: none;
+  }
+
+  .icon svg {
+    stroke: @color-dark;
+  }
+}

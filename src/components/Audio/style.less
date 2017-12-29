@@ -1,0 +1,36 @@
+@import '../../util.less';
+
+.audio {
+  position: relative;
+  margin: 0 0 16px 0;
+  height: 48px;
+  border-radius: 2px;
+  overflow: hidden;
+
+  .controls {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: @color-primary;
+
+    .play {
+      margin: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: @color-white;
+
+      svg {
+        margin: 6px 6px 6px 7px;
+        fill: @color-primary;
+        stroke: @color-primary;
+      }
+    }
+  }
+
+  .visual {
+    margin: 0 0 0 48px;
+    height: 48px;
+    background-color: @color-gray;
+  }
+}

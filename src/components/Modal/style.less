@@ -1,0 +1,54 @@
+@import '../../util.less';
+
+.modal {
+  width: 384px;
+  border-radius: 4px;
+  background-color: @color-white;
+  overflow: hidden;
+
+  .shadow();
+
+  .head {
+    position: relative;
+    height: 64px;
+
+    .title {
+      margin: 0 0 0 32px;
+      padding: 28px 0 0 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: @color-black;
+    }
+
+    .close {
+      position: absolute;
+      right: 32px;
+      top: 30px;
+      padding: 4px;
+      width: 24px;
+      height: 24px;
+
+      .box();
+
+      svg {
+        fill: @color-dark;
+      }
+    }
+  }
+
+  .content {
+    padding: 16px 32px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .actions {
+    padding: 16px;
+    height: 64px;
+    background-color: @color-gray;
+
+    .box();
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "docs",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "custom-react-scripts": "0.2.0",
+    "emoji-js": "^3.2.2",
+    "feather-icons": "^3.2.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "twemoji": "^2.5.0"
+  },
+  "scripts": {
+    "start": "NODE_PATH=src react-scripts start",
+    "build": "NODE_PATH=src react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

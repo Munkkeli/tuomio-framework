@@ -1,0 +1,166 @@
+@import 'util.less';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, @color-primary, @color-secondary);
+  background-attachment: fixed;
+  overflow-y: scroll;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  margin: 0 0 16px 0;
+  color: @color-black;
+
+  img {
+    float: left;
+    margin: 2px 4px 0 0;
+  }
+}
+
+h3 {
+  margin: 0 0 8px 0;
+  color: @color-black;
+}
+
+h4 {
+  margin: 0 0 8px 0;
+  color: @color-black;
+}
+
+p {
+  margin: 8px 0;
+  color: @color-dark;
+}
+
+label {
+  display: block;
+  padding: 0 0 4px 0;
+  font-size: 14px;
+  color: @color-dark;
+}
+
+content {
+  display: block;
+  padding: 64px 0;
+
+  .box();
+  .padded(256px);
+
+  p {
+    margin: 8px 0 32px 0;
+  }
+}
+
+.card {
+  display: inline-block;
+  margin: 0;
+  width: 192px;
+  border-radius: 4px;
+  background-color: @color-dark;
+  overflow: hidden;
+
+  .shadow();
+  .select();
+
+  .image {
+    width: 192px;
+    height: 192px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .info {
+    padding: 16px;
+    background-color: @color-white;
+
+    .box();
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+}
+
+.code {
+  margin: 0 0 16px 0;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: @color-gray;
+}
+
+.panel {
+  position: relative;
+  padding: 32px 32px 16px 32px;
+  margin: 0 0 32px 0;
+  min-height: 64px;
+  border-radius: 4px;
+  background-color: @color-white;
+
+  .shadow();
+
+  &.invisible {
+    background-color: transparent;
+    box-shadow: none;
+
+    h2 {
+      color: @color-white;
+    }
+
+    label {
+      color: @color-dimgray;
+    }
+  }
+
+  .fill {
+    width: ~'calc(100% + 64px)';
+    margin: 0 0 0 -32px;
+  }
+}
+
+.button-group {
+  margin: 0 0 0 0;
+  padding: 0 0 16px 0;
+  height: 32px;
+}
+
+@media (max-width: 1900px) {
+  content {
+    padding-left: 384px;
+    padding-right: 384px;
+  }
+}
+
+@media (max-width: 1300px) {
+  content {
+    padding-left: 256px;
+    padding-right: 256px;
+  }
+}
+
+@media (max-width: 1000px) {
+  content {
+    padding-top: 0;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

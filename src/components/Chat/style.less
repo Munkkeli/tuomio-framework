@@ -1,0 +1,185 @@
+@import '../../util.less';
+
+.chat {
+  position: relative;
+  margin: 0 0 32px + 16px 0;
+
+  &.right {
+    .user {
+      right: 0;
+    }
+
+    .content {
+      padding: 0 48px + 16px 0 0;
+
+      .text {
+        position: relative;
+        float: right;
+
+        &:before {
+          left: auto;
+          right: -8px;
+          border-right: none;
+          border-left: 8px solid @color-white;
+        }
+      }
+    }
+
+    .actions {
+      left: auto;
+      right: -16px + (48px + 16px);
+      padding: 16px 16px 16px 0;
+
+      button {
+        margin: 0 0 0 4px;
+        float: right;
+      }
+
+      .vote {
+        margin: 0 0 0 4px;
+        float: right;
+      }
+    }
+  }
+
+  &:hover {
+    .actions .vote {
+      background-color: @color-white;
+      .shadow();
+
+      &.selected {
+        background-color: @color-primary;
+
+        .count {
+          color: @color-white;
+        }
+      }
+
+      .count {
+        color: @color-dark;
+      }
+    }
+  }
+
+  .user {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-size: 100%;
+
+    .shadow();
+  }
+
+  .content {
+    display: block;
+    padding: 0 0 0 48px + 16px;
+    min-height: 48px;
+    overflow: hidden;
+
+    .text {
+      position: relative;
+      display: inline-block;
+      padding: 14px;
+      max-width: 100%;
+      min-height: 48px;
+      word-break: break-all;
+      border-radius: 4px;
+      background-color: @color-white;
+
+      .box();
+      .shadow();
+
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 16px;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid @color-white;
+      }
+    }
+  }
+
+  .actions {
+    position: absolute;
+    bottom: -28px - 16px;
+    left: -16px + (48px + 16px);
+    padding: 16px 0 16px 16px;
+
+    button {
+      margin: 0 4px 0 0;
+      padding: 0 10px;
+      float: left;
+      height: 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      line-height: 26px;
+
+      &.secondary {
+        color: @color-gray;
+      }
+    }
+
+    .vote {
+      float: left;
+      margin: 0 4px 0 0;
+      padding: 0 8px 0 0;
+      height: 24px;
+      border-radius: 24px;
+      cursor: pointer;
+
+      .select();
+
+      transition: transform @animation-easing @animation-time,
+        box-shadow @animation-easing @animation-time,
+        background-color @animation-easing @animation-time;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-1px);
+        .shadow(black, 80%, 4px, 18px);
+      }
+
+      .icon {
+        display: block;
+        float: left;
+        padding: 4px;
+        width: 24px;
+        height: 24px;
+
+        .box();
+
+        .emoji {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      .count {
+        position: relative;
+        display: inline-block;
+        padding: 5px 0 0 9px;
+        font-weight: bold;
+        font-size: 12px;
+        color: @color-white;
+
+        transition: color @animation-easing @animation-time;
+
+        &:before {
+          content: '×';
+          position: absolute;
+          display: inline-block;
+          top: 0;
+          left: 0;
+          line-height: 25px;
+          font-weight: normal;
+          color: @color-dimgray;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@import '../../util.less';
+
+.button {
+  position: relative;
+  float: right;
+  margin: 0 0 0 8px;
+  padding: 0 16px;
+  min-width: 32px;
+  font-size: 16px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 32px;
+  border: none;
+  outline: none;
+  background-color: @color-dark;
+  color: @color-white;
+  cursor: pointer;
+
+  transition: transform @animation-easing @animation-time,
+    box-shadow @animation-easing @animation-time,
+    background-color @animation-easing @animation-time,
+    opacity @animation-easing @animation-time;
+
+  .box();
+  .shadow(@color-dark);
+  .select();
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    // .shadow(@color-primary, 50%, 4px, 18px);
+    .shadow-hover(@color-dark);
+  }
+
+  &:disabled {
+    .stripe(lighten(@color-dark, 15%));
+    cursor: default;
+  }
+
+  &:before {
+    .selector();
+    height: 32px;
+    border-radius: 32px;
+  }
+
+  &.focus {
+    &:before {
+      left: -6px;
+      bottom: -6px;
+      padding: 3px;
+      border-width: 3px;
+    }
+  }
+
+  &.primary {
+    background-color: @color-primary;
+
+    .shadow(@color-primary);
+
+    &:disabled {
+      .stripe(lighten(@color-primary, 15%));
+    }
+
+    &:hover:not(:disabled) {
+      .shadow-hover(@color-primary);
+    }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    background-image: none;
+    color: @color-dark;
+
+    box-shadow: none;
+
+    &:disabled {
+      color: @color-dimgray;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: @color-gray;
+    }
+
+    .icon svg {
+      stroke: @color-dark;
+    }
+  }
+
+  &.danger {
+    background-color: @color-danger;
+
+    .shadow(@color-danger);
+
+    &:before {
+      border-color: @color-danger;
+    }
+
+    &:disabled {
+      .stripe(lighten(@color-danger, 15%));
+    }
+
+    &:hover:not(:disabled) {
+      .shadow-hover(@color-danger);
+    }
+  }
+
+  &.left {
+    float: left;
+    margin: 0 8px 0 0;
+  }
+
+  &.icon {
+    padding: 0 8px;
+  }
+
+  .icon {
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      stroke: @color-white;
+    }
+  }
+}
