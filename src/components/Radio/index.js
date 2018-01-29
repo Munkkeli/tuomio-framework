@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Combine } from 'util.js';
 
 import './style.less';
 
@@ -33,10 +34,11 @@ export default class Radio extends Component {
   onBlur = () => this.setState({ focus: false });
 
   render() {
-    const { name, disabled, options = [{ name: '', value: 'option' }] } = this.props;
+    const { focus } = this.state;
+    const { name, disabled, options = [{ name: '', value: 'option' }], className } = this.props;
 
     return (
-      <div className={`radio-group ${this.state.focus ? 'focus' : ''} ${disabled ? 'disabled' : ''}`}>
+      <div className={Combine('radio-group', { focus, disabled }, className)}>
         <div className="radio-options">
           {options.map((option) => <Toggle
             key={option.value}

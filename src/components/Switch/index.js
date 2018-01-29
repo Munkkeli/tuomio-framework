@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Combine } from 'util.js';
 
 import './style.less';
 
@@ -28,10 +29,11 @@ export default class Switch extends Component {
   onBlur = () => this.setState({ focus: false });
 
   render() {
-    const { label, disabled } = this.props;
+    const { focus } = this.state;
+    const { label, disabled, className } = this.props;
 
     return (
-      <div className={`switch ${this.state.value} ${this.state.focus ? 'focus' : ''} ${disabled ? 'disabled' : ''}`} onClick={this.onToggle}>
+      <div className={Combine(`switch ${this.state.value}`, { focus, disabled }, className)} onClick={this.onToggle}>
         <div className="toggle"></div>
         <label>{label}</label>
         <input type="checkbox" checked={this.state.value} onFocus={this.onFocus} onBlur={this.onBlur} disabled={disabled} />

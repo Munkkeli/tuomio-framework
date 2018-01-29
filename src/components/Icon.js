@@ -6,7 +6,7 @@ export default function Icon(props) {
 
   return <div
     className={`icon ${className ? className : ''}`}
-    dangerouslySetInnerHTML={{ __html: feather.toSvg(icon, props.style ? { width: props.style.width, height: props.style.height } : {}) }}
+    dangerouslySetInnerHTML={{ __html: feather.icons[icon].toSvg(props.style ? { width: props.style.width, height: props.style.height } : {}) }}
     {...other}
   />;
 }

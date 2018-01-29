@@ -5,7 +5,7 @@ import Icon from 'components/Icon';
 
 import './style.less';
 
-export default class Slider extends Component {
+export default class Audio extends Component {
   constructor(props) {
     super(props);
 

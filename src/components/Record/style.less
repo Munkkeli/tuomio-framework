@@ -1,0 +1,32 @@
+@import '../../util.less';
+
+.record {
+  margin: 0 0 16px 0;
+  height: 64px;
+
+  .cover {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-size: 100%;
+    border-radius: 3px;
+
+    .shadow();
+  }
+
+  .info {
+    padding: 8px 0 0 (64px + 12px);
+
+    .box();
+
+    h3 {
+      margin: 2px 0 3px 0;
+      font-weight: normal;
+      color: @color-white;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}

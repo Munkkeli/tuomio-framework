@@ -5,11 +5,11 @@ import Button from 'components/Button';
 import Carousel from 'components/Carousel';
 import Chat from 'components/Chat';
 import Code from 'components/Code';
-import Header from 'components/Header';
 import Image from 'components/Image';
 import Input from 'components/Input';
 import Modal from 'components/Modal';
 import Radio from 'components/Radio';
+import Record from 'components/Record';
 import Sidebar from 'components/Sidebar';
 import Slider from 'components/Slider';
 import Switch from 'components/Switch';
@@ -33,35 +33,13 @@ export default class App extends Component {
     this.setState({ loaded: true });
   }
 
-  play = (context, freq, duration = 100) => {
-    const oscillator = context.createOscillator();
-    oscillator.frequency.value = freq;
-    oscillator.connect(context.destination);
-    oscillator.start(0);
-
-    setTimeout(() => {
-      oscillator.stop();
-    }, duration);
-  }
-
-  timeout = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   render() {
     return (
       <div className="main">
-        <Header title="👌" icon="circle" tech={{}} loaded={this.state.loaded} />
         <content>
           {<Sidebar />}
 
-          <Modal title="Log In" actions={[<Button text="Register" secondary />, <Button text="Log In" primary />]}>
-            <Input label="Email" placeholder="example@example.com" />
-            <Input password label="Password" placeholder="••••••••••••••••" />
-            <Switch label="Remember me?" value={true} />
-          </Modal>
-
-          <Panel className="invisible" style={{ paddingTop: 0 }}>
+          <Panel className="invisible">
             <h2><img src="/icons/carousel.png" alt="" /> Carousel</h2>
 
             <Carousel className="fill">
@@ -81,6 +59,16 @@ export default class App extends Component {
               '   ...',
               '</Carousel>',
             ].join('\n')}</Code>
+          </Panel>
+
+          <Panel className="invisible" style={{ paddingTop: 0 }}>
+            <h2><img src="/icons/carousel.png" alt="" /> Record</h2>
+
+            <Record title="Green Light" artist="Lorde" album="Melodrama" cover="https://lh3.googleusercontent.com/fO7nGcSSXGaQ3i96fULjaFy9oPK1DVlk90tMJqJEY_Cj5qqkzu_S79K0qH-ksoiQT9nP16OmjgM=s90-c-e100" />
+            <Record title="POWER" artist="Kanye West" album="My Beautiful Dark Twisted Fantasy" cover="https://lh3.googleusercontent.com/ki6_nfiySu-l2TjGSC0sqM6uTl3-34wTNp0TDNCI46lIneEzFRta7Xa0dbZka5HTUiwzARRLXN4=s90-c-e100" />
+            <Record title="In The Night" artist="The Weeknd" album="Beauty Behind The Madness" cover="https://lh3.googleusercontent.com/J3d3t-um5e6ouR2hIqBPNnI-oMeCHkyYckFEJxILAYYV05HguInmLGGQHmdZEyvPyBOqFukSbQ=s90-c-e100" />
+            <Record title="The Bad Touch" artist="Bloodhound Gang" album="Hooray For Boobies" cover="https://lh3.googleusercontent.com/v-SHPMvaFKYqOgwk4FM8T2tH_19XHEEEy7lcMPEm6rqfpIjDf1XF_HNgs5b9LYpw-45Qad9nlw=s90-c-e100" />
+            <Record title="Walkway Blues (feat. Jordan Lawlor)" artist="M83" album="Junk" cover="https://lh3.googleusercontent.com/4P27kLHhv45YpReu-IxiHRCTDfH3w86Bg89fYtNfpkhUGmkxSrw7QeWTDxVyPKOMGhGWsVVsjA=s90-c-e100" />
           </Panel>
 
           <Panel>
@@ -197,6 +185,16 @@ export default class App extends Component {
             <h2><img src="/icons/image.png" alt="" /> Image</h2>
             
             <Image />
+          </Panel>
+
+          <Panel className="invisible">
+            <h2><img src="/icons/modal.png" alt="" /> Modal</h2>
+
+            <Modal title="Log In" actions={[<Button text="Register" secondary />, <Button text="Log In" primary />]}>
+              <Input label="Email" placeholder="example@example.com" />
+              <Input password label="Password" placeholder="••••••••••••••••" />
+              <Switch label="Remember me?" value={true} />
+            </Modal>
           </Panel>
 
           <Panel className="invisible">

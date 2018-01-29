@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Combine } from 'util.js';
 
 import './style.less';
 
-export default class Color extends Component {
+export default class Input extends Component {
   constructor(props) {
     super(props);
 
@@ -25,10 +26,11 @@ export default class Color extends Component {
   onBlur = () => this.setState({ focus: false });
 
   render() {
-    const { primary, placeholder, password, ...other } = this.props;
+    const { focus } = this.state;
+    const { primary, placeholder, password, className, ...other } = this.props;
 
     return (
-      <div className={`input ${this.state.focus ? 'focus' : ''} ${primary ? 'primary' : ''}`} onClick={this.onToggle}>
+      <div className={Combine('input', { focus, primary }, className)} onClick={this.onToggle}>
         <input
           type={password ? 'password' : 'text'}
           className="text"

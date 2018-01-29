@@ -5,7 +5,7 @@ import Button from 'components/Button';
 
 import './style.less';
 
-export default class Header extends Component {
+export default class Carousel extends Component {
   constructor(props) {
     super(props);
 

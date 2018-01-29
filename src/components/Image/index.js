@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Combine } from 'util.js';
 
 import Icon from 'components/Icon';
 
@@ -33,10 +34,11 @@ export default class Image extends Component {
   onDragLeave = () => this.setState({ over: false });
 
   render() {
-    const { width, height, color } = this.props;
+    const { image, over } = this.state;
+    const { width, height, color, className } = this.props;
 
     return (
-      <div className={`input-image ${this.state.image ? 'active' : ''} ${this.state.over ? 'hover' : ''}`}
+      <div className={Combine('input-image', { active: image, hover: over }, className)}
         onDragOver={this.onDragOver}
         onDragLeave={this.onDragLeave}
         style={{ backgroundColor: color, borderColor: color }}>

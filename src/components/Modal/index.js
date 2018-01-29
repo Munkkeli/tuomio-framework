@@ -4,7 +4,7 @@ import Icon from 'components/Icon';
 
 import './style.less';
 
-export default class Color extends Component {
+export default class Modal extends Component {
   constructor(props) {
     super(props);
 

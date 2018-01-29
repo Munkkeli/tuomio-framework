@@ -9,8 +9,6 @@ export default class Button extends Component {
   constructor(props) {
     super(props);
 
-    console.log(Combine);
-
     this.state = {
       focus: false,
     };
