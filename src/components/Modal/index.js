@@ -19,7 +19,7 @@ export default class Modal extends Component {
     return (
       <div className="modal">
         <div className="head">
-          <div className="title">{title}</div>
+          <h2 className="title">{title}</h2>
           <div className="close"><Icon icon="x" style={{ width: 16, height: 16 }} /></div>
         </div>
         <div className="content">

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Joi from 'joi';
 
 import Audio from 'components/Audio';
 import Button from 'components/Button';
@@ -105,15 +106,13 @@ export default class App extends Component {
           <Panel>
             <h2><img src="/icons/inputs.png" alt="" /> Input</h2>
             
-            <label>Primary</label>
-            <Input label="Primary" placeholder="Primary" primary />
+            <label>Validated</label>
+            <Input label="Primary" placeholder="Primary" validation={Joi.string().email()} primary />
             <label>Normal</label>
             <Input label="Normal" placeholder="Normal" />
-            
-            <label>Primary</label>
-            <Input label="Primary" placeholder="Primary" disabled primary />
-            <label>Normal</label>
-            <Input label="Normal" placeholder="Normal" disabled />
+
+            <label>Disabled</label>
+            <Input label="Normal" placeholder="Disabled" disabled />
 
             <label>Example</label>
             <Code>{[
@@ -191,7 +190,7 @@ export default class App extends Component {
             <h2><img src="/icons/modal.png" alt="" /> Modal</h2>
 
             <Modal title="Log In" actions={[<Button text="Register" secondary />, <Button text="Log In" primary />]}>
-              <Input label="Email" placeholder="example@example.com" />
+              <Input label="Email" placeholder="example@example.com" validation={Joi.string().email()} />
               <Input password label="Password" placeholder="••••••••••••••••" />
               <Switch label="Remember me?" value={true} />
             </Modal>
