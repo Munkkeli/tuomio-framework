@@ -1,0 +1,41 @@
+@import '../../util.less';
+
+.tag-group {
+  height: 21px;
+}
+
+.tag {
+  position: relative;
+  margin: 0 4px 0 0;
+  padding: 2px 6px 3px 6px;
+  height: 21px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  background-color: @color-success;
+  color: @color-white;
+
+  &.canRemove {
+    padding-right: 18px;
+
+    .remove {
+      display: block;
+    }
+  }
+
+  .remove {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    width: 19px;
+    height: 21px;
+    line-height: 21px;
+    cursor: pointer;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

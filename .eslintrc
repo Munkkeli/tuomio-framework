@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "react/forbid-prop-types": ["any"],
+    "import/extensions": ["js", "jsx"],
+    "object-curly-newline": "off",
+    "no-bitwise": ["error", { "int32Hint": true }],
+    "guard-for-in": "warn",
+    "no-restricted-syntax": "off",
+    "arrow-body-style": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "no-underscore-dangle": "off",
+    "max-len": "warn"
+  }
+}

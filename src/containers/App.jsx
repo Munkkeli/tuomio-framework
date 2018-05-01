@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Joi from 'joi';
+import joi from 'joi';
 
 import Audio from 'components/Audio';
 import Button from 'components/Button';
@@ -7,13 +7,14 @@ import Carousel from 'components/Carousel';
 import Chat from 'components/Chat';
 import Code from 'components/Code';
 import Image from 'components/Image';
-import Input from 'components/Input';
+import Input from 'components/input/text';
 import Modal from 'components/Modal';
 import Radio from 'components/Radio';
 import Record from 'components/Record';
 import Sidebar from 'components/Sidebar';
 import Slider from 'components/Slider';
 import Switch from 'components/Switch';
+import Tag, { TagGroup } from 'components/Tag';
 
 import Card from 'components/Card';
 import Panel from 'components/Panel';
@@ -107,7 +108,7 @@ export default class App extends Component {
             <h2><img src="/icons/inputs.png" alt="" /> Input</h2>
             
             <label>Validated</label>
-            <Input label="Primary" placeholder="Primary" validation={Joi.string().email()} primary />
+            <Input label="Primary" placeholder="Primary" validation={value => !joi.validate(value, joi.string().email()).error} primary />
             <label>Normal</label>
             <Input label="Normal" placeholder="Normal" />
 
@@ -175,6 +176,20 @@ export default class App extends Component {
           </Panel>
 
           <Panel>
+            <h2><img src="/icons/slider.png" alt="" /> Tag</h2>
+            
+            <TagGroup>
+              <Tag text="tag" canRemove />
+              <Tag text="tag 2" canRemove />
+              <Tag text="tag 3 " canRemove />
+              <Tag text="tag 4" canRemove />
+              <Tag text="tag 5" canRemove />
+              <Tag text="tag 6" canRemove />
+              <Tag text="tag 7" canRemove />
+            </TagGroup>
+          </Panel>
+
+          <Panel>
             <h2><img src="/icons/image.png" alt="" /> Audio</h2>
 
             <Audio />
@@ -186,11 +201,13 @@ export default class App extends Component {
             <Image />
           </Panel>
 
-          <Panel className="invisible">
+          <Panel className="container">
             <h2><img src="/icons/modal.png" alt="" /> Modal</h2>
 
             <Modal title="Log In" actions={[<Button text="Register" secondary />, <Button text="Log In" primary />]}>
-              <Input label="Email" placeholder="example@example.com" validation={Joi.string().email()} />
+              <label>Email</label>
+              <Input placeholder="example@example.com" validation={value => !joi.validate(value, joi.string().email()).error} />
+              <label>Password</label>
               <Input password label="Password" placeholder="••••••••••••••••" />
               <Switch label="Remember me?" value={true} />
             </Modal>
