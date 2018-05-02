@@ -7,7 +7,7 @@ import Carousel from 'components/Carousel';
 import Chat from 'components/Chat';
 import Code from 'components/Code';
 import Image from 'components/Image';
-import Input from 'components/input/text';
+import * as Input from 'components/input';
 import Modal from 'components/Modal';
 import Radio from 'components/Radio';
 import Record from 'components/Record';
@@ -20,6 +20,8 @@ import Card from 'components/Card';
 import Panel from 'components/Panel';
 
 import 'style.less';
+
+console.log('Input', Input);
 
 export default class App extends Component {
   constructor(props) {
@@ -93,39 +95,47 @@ export default class App extends Component {
             </div>
 
             <label>Example</label>
-            <Code>{[
-              '<Button text="Button" primary />',
-              '<Button text="Button" danger />',
-              '<Button text="Button" />',
-              '<Button text="Button" secondary />\n',
-              '<Button text="Button" disabled />\n',
-              '<Button text="Button" left />',
-              '<Button text="Button" right />'
-            ].join('\n')}</Code>
+            <Code>
+              {[
+                '<Button text="Button" primary />',
+                '<Button text="Button" danger />',
+                '<Button text="Button" />',
+                '<Button text="Button" secondary />\n',
+                '<Button text="Button" disabled />\n',
+                '<Button text="Button" left />',
+                '<Button text="Button" right />',
+              ].join('\n')}
+            </Code>
           </Panel>
 
           <Panel>
             <h2><img src="/icons/inputs.png" alt="" /> Input</h2>
-            
-            <label>Validated</label>
-            <Input label="Primary" placeholder="Primary" validation={value => !joi.validate(value, joi.string().email()).error} primary />
-            <label>Normal</label>
-            <Input label="Normal" placeholder="Normal" />
+
+            <label>Text</label>
+            <Input.Text placeholder="Text" />
+            <label>Validated Text</label>
+            <Input.Text placeholder="Validated Text" validation={value => !joi.validate(value, joi.string().email()).error} />
+
+            <label>Password</label>
+            <Input.Password placeholder="••••••••••" validation={value => !joi.validate(value, joi.string().min(3)).error} />
 
             <label>Disabled</label>
-            <Input label="Normal" placeholder="Disabled" disabled />
+            <Input.Text label="Normal" placeholder="Disabled" disabled />
 
             <label>Example</label>
-            <Code>{[
-              '<Input placeholder="Primary" primary />',
-              '<Input placeholder="Normal" />\n',
-              '<Input placeholder="Disabled" disabled />',
-            ].join('\n')}</Code>
+            <Code>
+              {[
+                '<Input.Text name="text" placeholder="Text" />',
+                '<Input.Password name="password" placeholder="Password" />',
+                '<Input.Search name="search" placeholder="Search" />\n',
+                '<Input.Text name="disabled" placeholder="Disabled" disabled />',
+              ].join('\n')}
+            </Code>
           </Panel>
 
           <Panel>
             <h2><img src="/icons/switches.png" alt="" /> Switch</h2>
-            
+
             <label>Normal</label>
             <Switch label="This switch is on" value={true} />
             <Switch label="This switch is off" value={false} />
@@ -179,13 +189,13 @@ export default class App extends Component {
             <h2><img src="/icons/slider.png" alt="" /> Tag</h2>
             
             <TagGroup>
-              <Tag text="tag" canRemove />
-              <Tag text="tag 2" canRemove />
-              <Tag text="tag 3 " canRemove />
-              <Tag text="tag 4" canRemove />
-              <Tag text="tag 5" canRemove />
-              <Tag text="tag 6" canRemove />
-              <Tag text="tag 7" canRemove />
+              <Tag text="abc" canRemove />
+              <Tag text="def" canRemove />
+              <Tag text="ghi " canRemove />
+              <Tag text="jkl" canRemove />
+              <Tag text="mno" canRemove />
+              <Tag text="pqr" canRemove />
+              <Tag text="stu" canRemove />
             </TagGroup>
           </Panel>
 
@@ -206,9 +216,9 @@ export default class App extends Component {
 
             <Modal title="Log In" actions={[<Button text="Register" secondary />, <Button text="Log In" primary />]}>
               <label>Email</label>
-              <Input placeholder="example@example.com" validation={value => !joi.validate(value, joi.string().email()).error} />
+              <Input.Text name="email" placeholder="example@example.com" validation={value => !joi.validate(value, joi.string().email()).error} />
               <label>Password</label>
-              <Input password label="Password" placeholder="••••••••••••••••" />
+              <Input.Password name="password" placeholder="••••••••••••••••" validation={value => !joi.validate(value, joi.string().min(2)).error} />
               <Switch label="Remember me?" value={true} />
             </Modal>
           </Panel>

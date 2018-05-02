@@ -17,7 +17,7 @@
     "joi": "^13.1.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "twemoji": "^2.5.0"
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "NODE_PATH=src react-scripts start",

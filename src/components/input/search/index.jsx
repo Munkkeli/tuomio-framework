@@ -4,7 +4,7 @@ import { Combine } from 'util.js';
 
 import Icon from 'components/Icon';
 
-export default class Text extends Component {
+export default class Search extends Component {
   static propTypes = {
     value: PropTypes.string,
     name: PropTypes.string.isRequired,
@@ -12,7 +12,6 @@ export default class Text extends Component {
     validation: PropTypes.func,
     onChange: PropTypes.func,
     className: PropTypes.string,
-    disabled: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -21,7 +20,6 @@ export default class Text extends Component {
     validation: null,
     onChange: null,
     className: '',
-    disabled: false,
   }
 
   constructor(props) {
@@ -70,7 +68,7 @@ export default class Text extends Component {
 
   render() {
     const { focus, valid, value, show } = this.state;
-    const { name, placeholder, validation, className, disabled } = this.props;
+    const { name, placeholder, validation, className } = this.props;
 
     const invalid = (!valid && (value || show) && !focus);
 
@@ -79,18 +77,16 @@ export default class Text extends Component {
     if (invalid) icon = 'x';
 
     return (
-      <div key={name} className={Combine('input', { focus, value, validation, show, valid, invalid, disabled }, className)}>
+      <div key={name} className={Combine('input', { focus, value, validation, show, valid, invalid }, className)}>
         <div className="status"><Icon icon={icon} style={{ width: 12, height: 12 }} /></div>
         <input
           id={name}
           name={name}
-          type="text"
           placeholder={placeholder}
           value={value}
           onChange={this.onChange}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
-          disabled={disabled}
         />
       </div>
     );

@@ -38,7 +38,7 @@ export class TagGroup extends Component {
     const { tags } = this.state;
 
     return (
-      <div className="tag-group">
+      <div className="tag-group-component">
         {tags.map(x => <Tag {...x} />)}
       </div>
     );
@@ -53,12 +53,12 @@ function Tag(props) {
 
   const onClickAction = (event) => {
     const elem = event.target.className.split(' ')[0];
-    if (elem === 'tag' && onClick) onClick(value);
+    if (elem === 'tag-component' && onClick) onClick(value);
     if (elem === 'remove') onRemoveAction();
   };
 
   return (
-    <button className={Combine('tag', { canRemove }, className)} onClick={onClickAction} onKeyUp={onKeyUpAction}>
+    <button className={Combine('tag-component', { canRemove }, className)} onClick={onClickAction} onKeyUp={onKeyUpAction}>
       {text}
       <div className="remove">×</div>
     </button>
