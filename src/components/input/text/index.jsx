@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Joi from 'joi';
 import { Combine } from 'util.js';
 
 import Icon from 'components/Icon';
@@ -11,6 +12,7 @@ export default class Text extends Component {
     placeholder: PropTypes.string,
     validation: PropTypes.func,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
     className: PropTypes.string,
     disabled: PropTypes.bool,
   }
@@ -20,6 +22,7 @@ export default class Text extends Component {
     placeholder: '',
     validation: null,
     onChange: null,
+    onBlur: null,
     className: '',
     disabled: false,
   }
@@ -54,12 +57,17 @@ export default class Text extends Component {
     this.setState({ value: e.target.value });
   }
 
+  onBlur = () => {
+    if (this.props.onBlur) this.props.onBlur(this.state.value);
+    this.setState({ focus: false, valid: this.validate() });
+  }
+
   onFocus = () => this.setState({ focus: true, show: false });
-  onBlur = () => this.setState({ focus: false, valid: this.validate() });
 
   validate = (validation = this.props.validation, value = this.state.value) => {
-    if (!validation) return true;
-    return validation(value);
+    if (typeof validation === 'function') return validation(value);
+    if (validation) return !(Joi.validate(value, validation).error);
+    return null;
   }
 
   check = () => {

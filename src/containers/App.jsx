@@ -117,7 +117,7 @@ export default class App extends Component {
             <Input.Text placeholder="Validated Text" validation={value => !joi.validate(value, joi.string().email()).error} />
 
             <label>Password</label>
-            <Input.Password placeholder="••••••••••" validation={value => !joi.validate(value, joi.string().min(3)).error} />
+            <Input.Password placeholder="••••••••••" meter validation={value => !joi.validate(value, joi.string().min(3)).error} />
 
             <label>Disabled</label>
             <Input.Text label="Normal" placeholder="Disabled" disabled />
